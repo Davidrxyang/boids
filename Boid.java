@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
@@ -6,8 +8,8 @@ import java.util.Random;
 class Boid {
     private float x, y;
     private float vx, vy;
-    private float maxSpeed = 4;
-    private float maxForce = 0.1f;
+    float maxSpeed = 4;
+    float maxForce = 0.1f;
 
     Boid(float x, float y) {
         this.x = x;
@@ -154,5 +156,5 @@ class Boid {
         g2d.rotate(-theta);
         g2d.translate(-x, -y);
     }
-    
 }
+
