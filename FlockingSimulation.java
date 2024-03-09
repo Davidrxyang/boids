@@ -14,13 +14,16 @@ public class FlockingSimulation extends JPanel {
     private float maxSpeed = 4;
     private float maxForce = 0.1f;
 
+    int WIDTH = 800;
+    int HEIGHT = 500;
+
     private FlockingSimulation() {
-        setPreferredSize(new Dimension(800, 600));
+        setPreferredSize(new Dimension(WIDTH, HEIGHT + 200));
 
 
         boids = new ArrayList<>();
         for (int i = 0; i < numBoids; i++) {
-            boids.add(new Boid(new Random().nextInt(800), new Random().nextInt(600)));
+            boids.add(new Boid(new Random().nextInt(WIDTH), new Random().nextInt(HEIGHT)));
         }
 
         // Add controls
@@ -98,7 +101,7 @@ public class FlockingSimulation extends JPanel {
     private void resetBoids() {
         boids.clear();
         for (int i = 0; i < numBoids; i++) {
-            boids.add(new Boid(new Random().nextInt(800), new Random().nextInt(600)));
+            boids.add(new Boid(new Random().nextInt(WIDTH), new Random().nextInt(HEIGHT)));
         }
     }
 

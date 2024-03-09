@@ -11,6 +11,9 @@ class Boid {
     float maxSpeed = 4;
     float maxForce = 0.1f;
 
+    int WIDTH = 800;
+    int HEIGHT = 500;
+
     Boid(float x, float y) {
         this.x = x;
         this.y = y;
@@ -54,7 +57,7 @@ class Boid {
     }
 
     private Point separate(ArrayList<Boid> boids) {
-        float desiredSeparation = 25;
+        float desiredSeparation = 50;
         Point steer = new Point(0, 0);
         int count = 0;
 
@@ -138,11 +141,22 @@ class Boid {
     }
 
     private void edges() {
-        if (x > 800) x = 0;
-        else if (x < 0) x = 800;
-        if (y > 600) y = 0;
-        else if (y < 0) y = 600;
+        if (x > WIDTH) {
+            x = WIDTH;
+            vx *= -1; // Reverse velocity when hitting the right edge
+        } else if (x < 0) {
+            x = 0;
+            vx *= -1; // Reverse velocity when hitting the left edge
+        }
+        if (y > HEIGHT) {
+            y = HEIGHT;
+            vy *= -1; // Reverse velocity when hitting the bottom edge
+        } else if (y < 0) {
+            y = 0;
+            vy *= -1; // Reverse velocity when hitting the top edge
+        }
     }
+    
 
     void display(Graphics2D g2d) {
         float theta = (float) (Math.atan2(vy, vx) + Math.PI / 2);
